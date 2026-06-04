@@ -218,10 +218,10 @@ Utilisation dans le projet :
 
 | Rôle | Lecture Bronze | Écriture Silver | Lecture Gold | Écriture Gold |
 |--------|--------|--------|--------|--------|
-| **Architecte Data** | Validation | ❌ | Validation | ❌ |
-| **Data Engineer** | ✅ | ✅ | ✅ | ❌ |
-| **Data Scientist** | ❌ | ❌ | ✅ | ✅ (ml/) |
-| **Data Analyst** | ❌ | ❌ | ✅ | ✅ (dashboard/) |
+| **Architecte Data** | Validation | Non | Validation | Non |
+| **Data Engineer** | Oui | Oui | Oui | Non |
+| **Data Scientist** | Non | Non | Oui | Oui (ml/) |
+| **Data Analyst** | Non | Non | Oui | Oui (dashboard/) |
 
 ---
 
@@ -284,17 +284,13 @@ Ce guide contient :
 
 L'infrastructure mise en place permet :
 
-- ✅ l'ingestion des données Airbnb ;
-- ✅ le traitement distribué avec Spark ;
-- ✅ l'organisation des données selon une architecture Medallion ;
-- ✅ la séparation Bronze / Silver / Gold ;
-- ✅ la préparation des données pour les équipes Engineering, Data Science et Analytics ;
-- ✅ la reconstruction complète de l'environnement à partir du dépôt Git.
+-  l'ingestion des données Airbnb ;
+-  le traitement distribué avec Spark ;
+-  l'organisation des données selon une architecture Medallion ;
+-  la séparation Bronze / Silver / Gold ;
+-  la préparation des données pour les équipes Engineering, Data Science et Analytics ;
+-  la reconstruction complète de l'environnement à partir du dépôt Git.
 
 Cette infrastructure constitue une base reproductible et scalable pour la réalisation du projet Data Factory sur Onyxia.
 
 ---
-
-**Dernière mise à jour** : 2026-06-04  
-**Auteur** : Amal (Architecte Data)  
-**Dépôt S3** : amalam (propriétaire du projet)
