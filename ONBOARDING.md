@@ -178,8 +178,6 @@ S3_BRONZE_PATH = "s3a://VOTRE_USERNAME/bronze/airbnb/"
 
 ## Étape 6.3 : Sauvegarder
 
-- **Ctrl+S** (ou Cmd+S sur Mac)
-- Ou **File → Save**
 
 **Fichier modifié et sauvegardé !**
 
