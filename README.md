@@ -3,7 +3,7 @@
 ## Projet Data Factory — M2 IMSD
 
 Auteur : Amal  
-Plateforme : Onyxia /   
+Plateforme : Onyxia  
 Architecture : Medallion (Bronze / Silver / Gold)
 
 ---
@@ -41,15 +41,15 @@ Contenu :
 
 ## Pourquoi Spark ?
 
-Bien que le dataset principal contienne environ 50 000 annonces, l'intégration des données complémentaires (reviews, disponibilités et historiques) augmente significativement le volume de données à traiter.
+Bien que le dataset principal contienne environ 50 000 annonces, l'intégration des données complémentaires (reviews, disponibilités et historiques) augmente significativement le volume de données.
 
 L'utilisation de Spark permet :
 
-le traitement distribué ;
-l'exécution parallèle des transformations ;
-une meilleure scalabilité ;
-la reproductibilité des traitements ;
-la gestion efficace de volumes de données plus importants.
+- le traitement distribué ;
+- l'exécution parallèle des transformations ;
+- une meilleure scalabilité ;
+- la reproductibilité des traitements ;
+- la gestion efficace de volumes de données plus importants.
 
 ## Objectifs
 
@@ -58,9 +58,9 @@ Cette infrastructure permet de :
 - stocker les données du projet dans une architecture organisée,
 - traiter les données avec Spark,
 - séparer les données brutes, nettoyées et exploitables,
-- permettre aux membres du projet de reproduire facilement l’environnement.
+- permettre aux membres du projet de reproduire facilement l'environnement.
 
-L’environnement a été testé avec :
+L'environnement a été testé avec :
 - stockage S3 ,
 - Spark sur Onyxia,
 - lecture et écriture de données depuis/vers S3.
@@ -73,36 +73,36 @@ L’environnement a été testé avec :
 
 ```text
 Dataset Airbnb (Kaggle)
-          |
-          v
-   Bronze (S3)
-  Données brutes CSV
-          |
-          v
-    Spark PySpark
- Nettoyage / Validation
-          |
-          v
-   Silver (Parquet)
-          |
-          v
-   Hive Metastore
- Catalogage des tables
-          |
-          v
-      Gold
-  Features & KPI
-      /    \
-     /      \
-    v        v
- ML Model  Dashboard
+           |
+           v
+    Bronze (S3)
+   Données brutes CSV
+           |
+           v
+     Spark PySpark
+  Nettoyage / Validation
+           |
+           v
+    Silver (Parquet)
+           |
+           v
+    Hive Metastore
+  Catalogage des tables
+           |
+           v
+       Gold
+   Features & KPI
+       /    \
+      /      \
+     v        v
+  ML Model  Dashboard
 ```
 
 ---
 
 ## Architecture Medallion
 
-## Bronze
+### Bronze
 
 Zone contenant les données brutes récupérées depuis les sources externes.
 
@@ -111,14 +111,16 @@ Caractéristiques :
 - conservation de la source originale,
 - historique préservé.
 
-Exemple :
+**Chemin S3** :
 ```text
-s3a://amalam/bronze/airbnb/raw/
+s3a://amalam/bronze/airbnb/AB_NYC_2019.csv
 ```
+
+**Ingestion** : Téléchargement automatique via `src/ingestion/download_airbnb.py`
 
 ---
 
-## Silver
+### Silver
 
 Zone contenant les données nettoyées et validées.
 
@@ -128,14 +130,18 @@ Caractéristiques :
 - données filtrées,
 - valeurs manquantes traitées.
 
-Exemple :
+**Chemin S3** :
 ```text
 s3a://amalam/silver/airbnb/cleaned/
 ```
 
+**Format** : Parquet (optimisé pour Spark)
+
+**Catalogage** : Tables enregistrées dans Hive Metastore pour accès SQL
+
 ---
 
-## Gold
+### Gold
 
 Zone contenant les données prêtes à être utilisées :
 - machine learning,
@@ -143,36 +149,32 @@ Zone contenant les données prêtes à être utilisées :
 - dashboards,
 - reporting.
 
-Exemples :
+**Chemins S3** :
 ```text
-s3a://amalam/gold/ml/
-s3a://amalam/gold/dashboard/
+s3a://amalam/gold/ml/             (données pour Data Scientists)
+s3a://amalam/gold/dashboard/      (données pour Data Analysts)
 ```
+
+---
+
 ## Organisation S3
 
 ```text
 amalam/
 ├── bronze/
 │   └── airbnb/
-│       └── raw/
+│       └── AB_NYC_2019.csv
 │
 ├── silver/
 │   └── airbnb/
-│       └── cleaned/
+│       └── cleaned/               (Parquet files)
 │
 ├── gold/
-│   ├── ml/
-│   └── dashboard/
+│   ├── ml/                        (pour Data Scientists)
+│   └── dashboard/                 (pour Data Analysts)
 │
 └── logs/
 ```
-
-Description :
-
-- Bronze : stockage des données Airbnb brutes.
-- Silver : stockage des données nettoyées et transformées.
-- Gold : stockage des datasets prêts pour le Machine Learning et les dashboards.
-- Logs : stockage éventuel des journaux d'exécution.
 
 ---
 
@@ -183,10 +185,10 @@ Description :
 Un seul service Jupyter PySpark a été utilisé sur Onyxia.
 
 Ce service permet :
-- l’exécution des notebooks,
-- l’utilisation de Spark,
+- l'exécution des notebooks,
+- l'utilisation de Spark,
 - la lecture des données depuis S3,
-- l’écriture des données vers Silver.
+- l'écriture des données vers Silver.
 
 ---
 
@@ -198,6 +200,7 @@ Utilisé pour :
 * séparation des zones Bronze/Silver/Gold,
 * persistance des données.
 
+---
 
 ## Hive Metastore
 
@@ -209,129 +212,149 @@ Utilisation dans le projet :
 - faciliter les requêtes SQL avec Spark ;
 - partager une structure de données commune entre les membres de l'équipe.
 
-
-
+---
 
 # 4. Répartition des responsabilités
 
 | Rôle | Lecture Bronze | Écriture Silver | Lecture Gold | Écriture Gold |
 |--------|--------|--------|--------|--------|
-| Architecte Data | Oui | Non | Oui | Non |
-| Data Engineer | Oui | Oui | Oui | Non |
-| Data Scientist | Non | Non | Oui | Oui (ml/) |
-| Data Analyst | Non | Non | Oui | Oui (dashboard/) |
+| **Architecte Data** | Validation | ❌ | Validation | ❌ |
+| **Data Engineer** | ✅ | ✅ | ✅ | ❌ |
+| **Data Scientist** | ❌ | ❌ | ✅ | ✅ (ml/) |
+| **Data Analyst** | ❌ | ❌ | ✅ | ✅ (dashboard/) |
 
+---
 
-
-Gouvernance des données
+## Gouvernance des données
 
 Les règles suivantes sont appliquées :
 
-- Bronze : données brutes, aucune modification manuelle.
-- Silver : uniquement alimentée par les pipelines ETL.
-- Gold : uniquement alimentée à partir de Silver.
+- **Bronze** : données brutes, aucune modification manuelle.
+- **Silver** : uniquement alimentée par les pipelines ETL (scripts Data Engineer).
+- **Gold** : uniquement alimentée à partir de Silver.
 - Aucun utilisateur ne modifie directement les données d'une autre couche.
 - Toutes les transformations doivent être traçables dans Git.
 
+---
 
-
-
-
-# 5 Déploiement de l’environnement
-
-
-
-todo
-
-
-# 8. Guide d’onboarding
-
-
-todo
-<img width="765" height="92" alt="{1900B377-1E57-46F7-97F6-84674EFBD38B}" src="https://github.com/user-attachments/assets/69cd546f-851c-436a-b5c7-43b0dae1dd13" />
-
-
-
-
-
-# 9. Reproductibilité et régénération des données
-
-Le stockage S3 sur Onyxia étant temporaire, les données doivent pouvoir être recréées à tout moment.
-
-Le projet prévoit :
-
-- un script d’ingestion permettant de télécharger les données Airbnb depuis Kaggle ;
-- les scripts de transformation Bronze → Silver ;
-- les scripts de transformation Silver → Gold ;
-- un script bootstrap permettant de reconstruire l’environnement.
-
-Exemple :
-
-```bash
-./bootstrap.sh
-```
-
-Ce script permettra :
-
-- de recréer l’arborescence S3 ;
-- de récupérer les données Airbnb ;
-- d’alimenter la zone Bronze ;
-- d’exécuter les premiers traitements.
-
-# 10. Structure du dépôt Git
+# 5. Structure du dépôt Git
 
 ```text
 data-factory/
 
 ├── src/
-│
 │   ├── ingestion/
-│   │   └── download_airbnb.py
-│
-│   ├── engineering/
-│   │   ├── bronze_to_silver.py
-│   │   └── silver_to_gold.py
+│   │   └── download_airbnb.py          [Architecte Data]
+│   │
+│   └── engineering/
+│       ├── bronze_to_silver.py         [Data Engineer]
+│       └── silver_to_gold.py           [Data Engineer]
 │
 ├── notebooks/
-│
 │   ├── exploration/
-│   │   └── exploration_airbnb.ipynb
-│
+│   │   └── exploration_airbnb.ipynb    [Data Analyst]
+│   │
 │   └── modeling/
-│       └── prediction_prix.ipynb
+│       └── prediction_prix.ipynb       [Data Scientist]
 │
 ├── README.md
 ├── ONBOARDING.md
-└── bootstrap.sh
+├── bootstrap.sh
+└── .gitignore
 ```
 
-Cette organisation sépare clairement :
+---
 
-- le code Data Engineering (scripts Python),
-- les notebooks Data Science,
-- la documentation,
-- les scripts d’initialisation.
+# 6. Mise en place de l'environnement
 
+**Pour les étapes détaillées de configuration et reproduction**, consultez **[ONBOARDING.md](./ONBOARDING.md)**.
 
+Ce guide contient :
+- Configuration du token Kaggle
+- Étapes de déploiement pas à pas
+- Accès à S3 et Hive
+- Reproduction complète de l'infrastructure
 
+---
 
-# 11. Conclusion
+# 7. Validation de l'infrastructure
 
-L’infrastructure mise en place permet :
+L'infrastructure a été validée sur les points suivants :
 
-- l’ingestion des données Airbnb ;
-- le traitement distribué avec Spark ;
-- l’organisation des données selon une architecture Medallion ;
-- la séparation Bronze / Silver / Gold ;
-- la préparation des données pour les équipes Engineering, Data Science et Analytics ;
-- la reconstruction complète de l’environnement à partir du dépôt Git.
+- ✅ Ingestion depuis Kaggle vers Bronze
+- ✅ Stockage S3 accessible depuis Spark
+- ✅ Spark PySpark sur Onyxia fonctionne
+- ✅ Lecture/écriture depuis/vers S3
+- ✅ Architecture Medallion définie
+- ✅ Hive Metastore disponible pour catalogage
 
-L’environnement a été validé par :
+**À valider** :
+- ⏳ Transformation Bronze → Silver (Data Engineer)
+- ⏳ Modèles ML en Gold (ml/) (Data Scientist)
+- ⏳ KPI en Gold (dashboard/) (Data Analyst)
 
-- la création de l’architecture S3 ;
-- le lancement du cluster Spark ;
-- la lecture de données depuis Bronze ;
-- l’écriture de données au format Parquet dans Silver ;
-- la relecture des données transformées.
+---
+
+# 8. Troubleshooting
+
+### Problème : Accès S3 refusé
+
+```python
+# Vérifier les credentials AWS/S3
+import os
+print(os.environ.get('AWS_ACCESS_KEY_ID'))
+print(os.environ.get('AWS_SECRET_ACCESS_KEY'))
+```
+
+### Problème : Spark ne trouve pas les données
+
+```python
+# Vérifier le chemin S3
+df = spark.read.option("header", "true").csv("s3a://amalam/bronze/airbnb/AB_NYC_2019.csv")
+print(df.count())  # Devrait retourner le nombre de lignes
+```
+
+### Problème : Table Hive non reconnue
+
+```python
+# Lister les tables disponibles
+spark.sql("SHOW TABLES").show()
+
+# Recréer la table
+spark.sql("""
+    CREATE TABLE IF NOT EXISTS airbnb_listings
+    USING PARQUET
+    LOCATION 's3a://amalam/silver/airbnb/cleaned/'
+""")
+```
+
+---
+
+# 9. Ressources
+
+- [Kaggle Dataset](https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data)
+- [Apache Spark Documentation](https://spark.apache.org/docs/latest/)
+- [Hive Metastore](https://cwiki.apache.org/confluence/display/Hive/Design/Metastore)
+- [Medallion Architecture](https://www.databricks.com/blog/2022/06/24/simplify-data-pipelines-with-delta-lake.html)
+- [Onyxia Documentation](https://www.onyxia.sh/)
+
+---
+
+# 10. Conclusion
+
+L'infrastructure mise en place permet :
+
+- ✅ l'ingestion des données Airbnb ;
+- ✅ le traitement distribué avec Spark ;
+- ✅ l'organisation des données selon une architecture Medallion ;
+- ✅ la séparation Bronze / Silver / Gold ;
+- ✅ la préparation des données pour les équipes Engineering, Data Science et Analytics ;
+- ✅ la reconstruction complète de l'environnement à partir du dépôt Git.
 
 Cette infrastructure constitue une base reproductible et scalable pour la réalisation du projet Data Factory sur Onyxia.
+
+---
+
+**Dernière mise à jour** : 2026-06-04  
+**Auteur** : Amal (Architecte Data)  
+**Dépôt S3** : amalam (propriétaire du projet)
