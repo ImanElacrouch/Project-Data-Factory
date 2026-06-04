@@ -277,70 +277,10 @@ Ce guide contient :
 
 ---
 
-# 7. Validation de l'infrastructure
 
-L'infrastructure a été validée sur les points suivants :
 
-- ✅ Ingestion depuis Kaggle vers Bronze
-- ✅ Stockage S3 accessible depuis Spark
-- ✅ Spark PySpark sur Onyxia fonctionne
-- ✅ Lecture/écriture depuis/vers S3
-- ✅ Architecture Medallion définie
-- ✅ Hive Metastore disponible pour catalogage
 
-**À valider** :
-- ⏳ Transformation Bronze → Silver (Data Engineer)
-- ⏳ Modèles ML en Gold (ml/) (Data Scientist)
-- ⏳ KPI en Gold (dashboard/) (Data Analyst)
-
----
-
-# 8. Troubleshooting
-
-### Problème : Accès S3 refusé
-
-```python
-# Vérifier les credentials AWS/S3
-import os
-print(os.environ.get('AWS_ACCESS_KEY_ID'))
-print(os.environ.get('AWS_SECRET_ACCESS_KEY'))
-```
-
-### Problème : Spark ne trouve pas les données
-
-```python
-# Vérifier le chemin S3
-df = spark.read.option("header", "true").csv("s3a://amalam/bronze/airbnb/AB_NYC_2019.csv")
-print(df.count())  # Devrait retourner le nombre de lignes
-```
-
-### Problème : Table Hive non reconnue
-
-```python
-# Lister les tables disponibles
-spark.sql("SHOW TABLES").show()
-
-# Recréer la table
-spark.sql("""
-    CREATE TABLE IF NOT EXISTS airbnb_listings
-    USING PARQUET
-    LOCATION 's3a://amalam/silver/airbnb/cleaned/'
-""")
-```
-
----
-
-# 9. Ressources
-
-- [Kaggle Dataset](https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data)
-- [Apache Spark Documentation](https://spark.apache.org/docs/latest/)
-- [Hive Metastore](https://cwiki.apache.org/confluence/display/Hive/Design/Metastore)
-- [Medallion Architecture](https://www.databricks.com/blog/2022/06/24/simplify-data-pipelines-with-delta-lake.html)
-- [Onyxia Documentation](https://www.onyxia.sh/)
-
----
-
-# 10. Conclusion
+# 7. Conclusion
 
 L'infrastructure mise en place permet :
 
