@@ -300,11 +300,8 @@ df.show(5)
 ```
 
 **Vous devriez voir :**
-```
-<img width="1462" height="504" alt="{32B253F3-FF76-4E9C-A689-F277740C8980}" src="https://github.com/user-attachments/assets/f2bef69f-4011-4cf2-b97a-039a359d0923" />
+<img width="1389" height="502" alt="{BC5E5406-E7F4-4E11-A732-9EF421AEA949}" src="https://github.com/user-attachments/assets/44f9e939-face-4ede-b908-0b2417b2487a" />
 
-
-```
 
 **Données vérifiées !**
 
