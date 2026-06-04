@@ -2,7 +2,7 @@
 
 Ce guide vous montre comment reproduire **Data Factory** de zéro.
 
-** Important** : Chaque personne utilise son propre **bucket S3** (remplacer `amalam` par votre username)
+**Important** : Chaque personne utilise son propre **bucket S3** (remplacer `amalam` par votre username)
 
 ---
 
@@ -65,7 +65,7 @@ Ce guide vous montre comment reproduire **Data Factory** de zéro.
 - Vous verrez un bouton **"Jupyter"** 
 - Cliquer dessus pour ouvrir Jupyter
 
- **Onyxia et Jupyter sont prêts !**
+**Onyxia et Jupyter sont prêts !**
 
 ---
 
@@ -90,9 +90,9 @@ VOTRE_USERNAME/
     └── dashboard/
 ```
 
-creer les dossier dans data storage ... new folder ..
+Créer les dossiers dans **Data Storage** → **New Folder**
 
- **Dossiers S3 créés !**
+**Dossiers S3 créés !**
 
 ---
 
@@ -101,9 +101,8 @@ creer les dossier dans data storage ... new folder ..
 ## Étape 4.1 : Créer le token API Kaggle
 
 1. Aller sur : https://www.kaggle.com/settings/account
-2 your api token
-3 copie token
-4 dans terminal creer .json ...
+2. Cliquer sur **"Create New API Token"**
+3. Copier le token
 
 ### Le fichier ressemble à :
 
@@ -116,21 +115,30 @@ creer les dossier dans data storage ... new folder ..
 
 ## Étape 4.2 : Configurer dans Jupyter
 
-les étapes :
+Exécuter dans le terminal :
+
+```bash
 mkdir -p ~/.kaggle
-nano kaggle.json
+nano ~/.kaggle/kaggle.json
+```
+
+Coller :
+```json
 {
   "username": "monusername",
   "key": "abcdef123456"
 }
+```
 
+Puis :
+```bash
 mv kaggle.json ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json
 ls ~/.kaggle
 pip install kaggle
 ```
 
- **Token Kaggle configuré !**
+**Token Kaggle configuré !**
 
 
 # 5. Cloner le projet
@@ -147,10 +155,7 @@ git clone https://github.com/solfahamal/data-factory.git
 cd data-factory
 ```
 
-
-
-
- **Projet cloné !**
+**Projet cloné !**
 
 ---
 
@@ -159,7 +164,6 @@ cd data-factory
 ## Étape 6.1 : Ouvrir le fichier d'ingestion
 
 **Dans Jupyter** :
-
 
 1. Naviguer : `data-factory → src → ingestion`
 2. Double-cliquer sur **`download_airbnb.py`**
@@ -249,7 +253,7 @@ Data flow:
 ======================================================================
 ```
 
- **Ingestion terminée !**
+**Ingestion terminée !**
 
 ---
 
@@ -310,10 +314,9 @@ df.show(5)
 
 ```
 
- **Données vérifiées !**
+**Données vérifiées !**
 
 ---
-
 
 
 
@@ -345,9 +348,9 @@ df.show(5)
 
 ---
 
-# 11. Troubleshooting
+# 9. Troubleshooting
 
-###  Token Kaggle non trouvé
+### Token Kaggle non trouvé
 
 ```
 OSError: Could not find kaggle.json
@@ -358,7 +361,7 @@ OSError: Could not find kaggle.json
 - Refaire l'étape 4
 
 
-###  CSV non trouvé en S3
+### CSV non trouvé en S3
 
 ```
 FileNotFoundError: CSV file not found
@@ -368,7 +371,7 @@ FileNotFoundError: CSV file not found
 - Vérifier que vous avez remplacé `amalam` par VOTRE_USERNAME
 - Relancer l'ingestion
 
-###  Hive table non trouvée
+### Hive table non trouvée
 
 ```
 AnalysisException: Table not found
@@ -383,7 +386,7 @@ spark.sql(f"""
 """)
 ```
 
-###  Spark ne démarre pas
+### Spark ne démarre pas
 
 **Solution :**
 - Attendre 5 minutes après le lancement d'Onyxia
@@ -391,7 +394,7 @@ spark.sql(f"""
 
 ---
 
-# 12. Structure finale
+# 10. Structure finale
 
 Après tout, vous aurez :
 
@@ -411,7 +414,7 @@ data-factory/
 
 ---
 
-# 13. Conclusion
+# 11. Conclusion
 
 - **README.md** : Architecture générale
 - **ONBOARDING.md** : Ce guide (vous le lisez !)
