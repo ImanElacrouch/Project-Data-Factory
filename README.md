@@ -1,4 +1,4 @@
-# Infrastructure Data - Onyxia
+# Infrastructure data - Onyxia
 
 ## Projet Data Factory - M2 IMSD
 
