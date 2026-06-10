@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-06-10T21:17:53",
+  "username": "ekouraogo",
+  "rows_bronze": 48895,
+  "rows_silver": 48870,
+  "rows_removed": 25,
+  "retention_pct": 99.95,
+  "nulls_before": {
+    "id": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "name": {
+      "nulls": 16,
+      "null_rate_pct": 0.03
+    },
+    "host_id": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "host_name": {
+      "nulls": 21,
+      "null_rate_pct": 0.04
+    },
+    "neighbourhood_group": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "neighbourhood": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "latitude": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "longitude": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "room_type": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "price": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "minimum_nights": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "number_of_reviews": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "last_review": {
+      "nulls": 10052,
+      "null_rate_pct": 20.56
+    },
+    "reviews_per_month": {
+      "nulls": 10052,
+      "null_rate_pct": 20.56
+    },
+    "calculated_host_listings_count": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "availability_365": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    }
+  },
+  "nulls_after": {
+    "id": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "name": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "host_id": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "host_name": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "neighbourhood_group": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "neighbourhood": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "latitude": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "longitude": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "room_type": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "price": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "minimum_nights": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "number_of_reviews": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "last_review": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "reviews_per_month": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "calculated_host_listings_count": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    },
+    "availability_365": {
+      "nulls": 0,
+      "null_rate_pct": 0.0
+    }
+  },
+  "cleaning_rules": {
+    "price_min": 1,
+    "minimum_nights_max": 365,
+    "missing_value_strategy": {
+      "name/host_name": "Unknown",
+      "reviews_per_month": 0.0,
+      "last_review": "No review"
+    },
+    "partitioned_by": "neighbourhood_group",
+    "format": "parquet",
+    "write_mode": "overwrite (idempotent)"
+  }
+}
