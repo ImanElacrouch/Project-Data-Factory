@@ -2,7 +2,7 @@
 
 ## Projet Data Factory - M2 IMSD
 
-Auteurs : KOURAOGO Emmanuel & PECH Mylane  
+Auteurs : Amal, KOURAOGO Emmanuel & PECH Mylane  
 Plateforme : Onyxia  
 Architecture : Medallion (Bronze / Silver / Gold)
 
