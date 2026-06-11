@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏭 Data Factory — Pipeline Data Engineering
+# Data Factory — Pipeline Data Engineering
 
 ### Architecture Medallion · PySpark · Onyxia SSP Cloud
 
@@ -20,18 +20,18 @@
 Pipeline de traitement des données **Airbnb New York City 2019** (48 895 listings) selon l'architecture **Medallion** sur la plateforme **Onyxia** (SSP Cloud), entièrement en **PySpark distribué**.
 
 ```
-🥉 BRONZE          🥈 SILVER                    🥇 GOLD
-────────────       ──────────────────────        ─────────────────────────
-CSV brut     ──►   Données nettoyées       ──►   Features ML
-AB_NYC_2019        Parquet partitionné           KPI Dashboard
-(Architecte)       (Data Engineer)               (Data Engineer)
+BRONZE SILVER GOLD
+──────────── ────────────────────── ─────────────────────────
+CSV brut ──► Données nettoyées ──► Features ML
+AB_NYC_2019 Parquet partitionné KPI Dashboard
+(Architecte) (Data Engineer) (Data Engineer)
 ```
 
 | Zone | Contenu | Responsabilité |
 |:----:|---------|:--------------:|
-| 🥉 **Bronze** | CSV brut Airbnb non modifié | Architecte |
-| 🥈 **Silver** | Données nettoyées en Parquet | **Data Engineer** |
-| 🥇 **Gold** | Features ML + KPI dashboard | **Data Engineer** |
+| **Bronze** | CSV brut Airbnb non modifié | Architecte |
+| **Silver** | Données nettoyées en Parquet | **Data Engineer** |
+| **Gold** | Features ML + KPI dashboard | **Data Engineer** |
 
 ---
 
@@ -40,10 +40,10 @@ AB_NYC_2019        Parquet partitionné           KPI Dashboard
 ```
 Data-factory/
 ├── src/engineering/
-│   ├── bronze_to_silver.py    # Nettoyage CSV → Parquet partitionné
-│   └── silver_to_gold.py      # Feature engineering + KPI agrégés
+│ ├── bronze_to_silver.py # Nettoyage CSV → Parquet partitionné
+│ └── silver_to_gold.py # Feature engineering + KPI agrégés
 └── reports/
-    └── quality_report.json    # Rapport qualité (nulls avant/après)
+ └── quality_report.json # Rapport qualité (nulls avant/après)
 ```
 
 ---
@@ -56,13 +56,13 @@ Data-factory/
 
 | Opération | Détail | Impact |
 |-----------|--------|:------:|
-| ✅ **Correction types** | `price`, `minimum_nights`, `latitude` → `int`/`double` | Toutes colonnes |
-| ✅ **reviews_per_month** null → `0.0` | Aucune review = donnée valide, pas manquante | 20.56% |
-| ✅ **last_review** null → `"No review"` | — | 20.56% |
-| ✅ **name/host_name** null → `"Unknown"` | — | ~0.04% |
-| ❌ **Prix ≤ 0** supprimés | Logement gratuit = aberrant | 11 lignes |
-| ❌ **minimum_nights > 365** supprimés | Valeurs aberrantes (jusqu'à 1250 nuits) | 14 lignes |
-| 🔁 **Déduplication** sur `id` | Garantit l'idempotence | — |
+| **Correction types** | `price`, `minimum_nights`, `latitude` → `int`/`double` | Toutes colonnes |
+| **reviews_per_month** null → `0.0` | Aucune review = donnée valide, pas manquante | 20.56% |
+| **last_review** null → `"No review"` | — | 20.56% |
+| **name/host_name** null → `"Unknown"` | — | ~0.04% |
+| **Prix ≤ 0** supprimés | Logement gratuit = aberrant | 11 lignes |
+| **minimum_nights > 365** supprimés | Valeurs aberrantes (jusqu'à 1250 nuits) | 14 lignes |
+| **Déduplication** sur `id` | Garantit l'idempotence | — |
 
 **Sortie :** Parquet partitionné par `neighbourhood_group` → 5 partitions (partition pruning efficace)
 
@@ -72,7 +72,7 @@ Data-factory/
 
 > Lecture Silver → Feature Engineering → KPI Dashboard
 
-### 🎯 Gold ML — 6 features pour le Data Scientist
+### Gold ML — 6 features pour le Data Scientist
 
 | Feature | Description |
 |---------|-------------|
@@ -83,7 +83,7 @@ Data-factory/
 | `price_vs_zone_pct` | Écart relatif au prix moyen de zone |
 | `zone_type_avg_price` | Prix moyen zone × type de logement |
 
-### 📊 Gold Dashboard — 15 KPI pour le Data Analyst
+### Gold Dashboard — 15 KPI pour le Data Analyst
 
 5 zones × 3 types de logement → prix moyen/médian/min/max, disponibilité, reviews
 
@@ -111,11 +111,11 @@ Data-factory/
 
 | Propriété | Détail |
 |-----------|--------|
-| ⚡ **100% PySpark** | Aucune opération pandas — tout distribué |
-| 🔁 **Idempotent** | `mode("overwrite")` — relançable sans duplication |
-| 🔒 **0 credential en dur** | `S3_USERNAME` via variable d'env, accès S3 par Onyxia |
-| 🏗️ **Gouvernance Medallion** | Silver ← Bronze uniquement · Gold ← Silver uniquement |
-| 🛡️ **Tolérance aux pannes** | Spark recalcule automatiquement les partitions perdues |
+| **100% PySpark** | Aucune opération pandas — tout distribué |
+| **Idempotent** | `mode("overwrite")` — relançable sans duplication |
+| **0 credential en dur** | `S3_USERNAME` via variable d'env, accès S3 par Onyxia |
+| **Gouvernance Medallion** | Silver ← Bronze uniquement · Gold ← Silver uniquement |
+| **Tolérance aux pannes** | Spark recalcule automatiquement les partitions perdues |
 
 ---
 
