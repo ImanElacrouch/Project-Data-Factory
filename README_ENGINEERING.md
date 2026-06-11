@@ -53,7 +53,7 @@ Data-factory/
 
 ---
 
-## Script 1 — `bronze_to_silver.py`
+## Script 1 - `bronze_to_silver.py`
 
 > Lecture du CSV Bronze · Nettoyage · Écriture Parquet Silver
 
@@ -73,7 +73,7 @@ Data-factory/
 
 ---
 
-## Script 2 — `silver_to_gold.py`
+## Script 2 - `silver_to_gold.py`
 
 > Lecture Silver · Feature Engineering · KPI Dashboard
 
