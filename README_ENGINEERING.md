@@ -1,6 +1,6 @@
 <div align="center">
 
-# Data Factory _ Pipeline Data Engineering
+# Data Factory - Pipeline Data Engineering
 
 ### Architecture Medallion · PySpark · Onyxia SSP Cloud
 
