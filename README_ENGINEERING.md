@@ -1,6 +1,6 @@
 <div align="center">
 
-# Data Factory — Pipeline Data Engineering
+# Data Factory _ Pipeline Data Engineering
 
 ### Architecture Medallion · PySpark · Onyxia SSP Cloud
 
@@ -62,14 +62,14 @@ Data-factory/
 | Opération | Détail | Impact |
 |-----------|--------|--------|
 | Correction des types | `price`, `minimum_nights`, `latitude` → `int` / `double` | Toutes colonnes |
-| `reviews_per_month` null | Remplacé par `0.0` — aucune review ≠ donnée manquante | 20.56 % |
+| `reviews_per_month` null | Remplacé par `0.0` - aucune review ≠ donnée manquante | 20.56 % |
 | `last_review` null | Remplacé par `"No review"` | 20.56 % |
 | `name` / `host_name` null | Remplacé par `"Unknown"` | ~0.04 % |
-| Prix ≤ 0 | Supprimés — logement gratuit incohérent pour la prédiction | 11 lignes |
-| `minimum_nights` > 365 | Supprimés — valeurs aberrantes (jusqu'à 1 250 nuits) | 14 lignes |
-| Déduplication sur `id` | Garantit l'idempotence en cas de ré-ingestion | — |
+| Prix ≤ 0 | Supprimés - logement gratuit incohérent pour la prédiction | 11 lignes |
+| `minimum_nights` > 365 | Supprimés - valeurs aberrantes (jusqu'à 1 250 nuits) | 14 lignes |
+| Déduplication sur `id` | Garantit l'idempotence en cas de ré-ingestion | - |
 
-**Sortie :** Parquet partitionné par `neighbourhood_group` — 5 partitions (partition pruning efficace)
+**Sortie :** Parquet partitionné par `neighbourhood_group` - 5 partitions (partition pruning efficace)
 
 ---
 
@@ -81,7 +81,7 @@ Data-factory/
 
 | Feature | Type | Description |
 |---------|------|-------------|
-| `price_log` | Numérique | Logarithme du prix — normalise la distribution |
+| `price_log` | Numérique | Logarithme du prix - normalise la distribution |
 | `has_reviews` | Binaire | Indicateur d'activité du listing |
 | `occupancy_rate` | Numérique | Taux d'occupation estimé |
 | `zone_avg_price` | Numérique | Prix moyen de la zone géographique |
@@ -116,8 +116,8 @@ Data-factory/
 
 | Propriété | Description |
 |-----------|-------------|
-| 100 % PySpark | Aucune opération pandas — traitement entièrement distribué |
-| Idempotent | `mode("overwrite")` — relançable sans duplication des données |
+| 100 % PySpark | Aucune opération pandas - traitement entièrement distribué |
+| Idempotent | `mode("overwrite")` - relançable sans duplication des données |
 | Sans credential | `S3_USERNAME` via variable d'environnement · accès S3 géré par Onyxia |
 | Gouvernance Medallion | Silver alimentée depuis Bronze uniquement · Gold depuis Silver uniquement |
 | Tolérance aux pannes | Spark recalcule automatiquement les partitions perdues (OOMKill Kubernetes) |
@@ -131,10 +131,10 @@ Data-factory/
 ```bash
 cd ~/work/data-factory
 
-# Étape 1 — Bronze vers Silver
+# Étape 1 _ Bronze vers Silver
 python src/engineering/bronze_to_silver.py
 
-# Étape 2 — Silver vers Gold
+# Étape 2 - Silver vers Gold
 python src/engineering/silver_to_gold.py
 
 # Avec un bucket S3 personnalisé
