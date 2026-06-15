@@ -154,6 +154,40 @@ spark.stop()
 
 ---
 
+## Tests unitaires
+
+Tests unitaires des fonctions clés du pipeline de nettoyage, exécutables **en local sans accès à S3 ni à Onyxia** grâce à un DataFrame synthétique en mémoire.
+
+### Couverture — 14 tests
+
+| Fonction testée | Cas couverts |
+|----------------|-------------|
+| `cast_types` | Conversion numérique, préservation des strings, intégrité des valeurs |
+| `handle_missing` | `reviews_per_month` null → `0.0`, `last_review` null → `"No review"`, `name`/`host_name` null → `"Unknown"`, conservation des listings sans avis |
+| `filter_invalid` | Suppression prix ≤ 0, suppression `minimum_nights` > 365, déduplication sur `id`, conservation des lignes valides |
+| `compute_null_rates` | Comptage correct des lignes, détection des nulls avant nettoyage, zéro null après nettoyage |
+
+### Structure
+
+```
+Data-factory/
+├── tests/
+│   ├── __init__.py
+│   └── test_engineering.py    # 14 tests unitaires
+└── requirements.txt           # pyspark + pytest
+```
+
+### Lancement
+
+```bash
+pip install -r requirements.txt
+pytest tests/ -v
+```
+
+**Résultat attendu :** 14 tests passés, aucun accès réseau requis.
+
+---
+
 <div align="center">
 
 **Emmanuel KOURAOGO** & **Mylane PECH** · M2 IMSD · Paris-Saclay
