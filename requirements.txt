@@ -1,0 +1,3 @@
+# Data Factory - Data Engineer - dépendances
+pyspark==4.1.1
+pytest>=7.0
