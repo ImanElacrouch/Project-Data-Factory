@@ -254,9 +254,12 @@ data-factory/
 ├── notebooks/
 │   ├── exploration/
 │   │   └── exploration_airbnb.ipynb    [Data Analyst]
-│   │
-│   └── modeling/
-│       └── prediction_prix.ipynb       [Data Scientist]
+│   
+└── modeling/
+|   ├── predection_prix_airbnb_NN.ipynb    <-- notebook principal
+|   ├── Dockerfile                         <-- environnement isolé
+|   ├── requirements.txt                   <-- installer les librairies
+|   └── readme.md                          
 │
 ├── README.md
 ├── ONBOARDING.md
