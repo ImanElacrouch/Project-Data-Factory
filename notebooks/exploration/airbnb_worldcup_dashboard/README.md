@@ -21,12 +21,6 @@ sur le logement et les prix.
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
-Le dashboard cherche les données dans cet ordre :
-1. variable d'environnement `AIRBNB_DATA_PATH`
-2. `./data/airbnb_features.csv` (déjà inclus)
-3. `~/work/Data-factory/airbnb_features.csv`
-
 ---
 
 ## 🧭 Déploiement sur Onyxia / SSPCloud
