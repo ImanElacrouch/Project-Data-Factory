@@ -243,23 +243,50 @@ Les règles suivantes sont appliquées :
 ```text
 data-factory/
 
+.
 ├── src/
 │   ├── ingestion/
-│   │   └── download_airbnb.py          [Architecte Data]
+│   │   └── download_airbnb.py                [Architecte Data]
 │   │
 │   └── engineering/
-│       ├── bronze_to_silver.py         [Data Engineer]
-│       └── silver_to_gold.py           [Data Engineer]
+│       ├── bronze_to_silver.py               [Data Engineer]
+│       └── silver_to_gold.py                 [Data Engineer]
 │
 ├── notebooks/
 │   ├── exploration/
-│   │   └── exploration_airbnb.ipynb    [Data Analyst]
-│   
-└── modeling/
-|   ├── predection_prix_airbnb_NN.ipynb    <-- notebook principal
-|   ├── Dockerfile                         <-- environnement isolé
-|   ├── requirements.txt                   <-- installer les librairies
-|   └── readme.md                          
+│   │   └── exploration_airbnb.ipynb          [Data Analyst]
+│   │
+│   └── modeling/
+│       ├── prediction_prix_airbnb_NN.ipynb   [Data Scientist]
+│       ├── Dockerfile
+│       ├── requirements.txt
+│       └── README.md
+│
+├── dashboard/
+│   └── airbnb_worldcup_dashboard/
+│       ├── app.py                            [Dashboard Streamlit]
+│       ├── pages/
+│       │   ├── accueil.py
+│       │   ├── carte.py
+│       │   ├── prix.py
+│       │   ├── quartiers.py
+│       │   └── recommandations.py
+│       ├── components/
+│       │   ├── filters.py
+│       │   └── kpi_cards.py
+│       ├── utils/
+│       │   ├── data_loader.py
+│       │   ├── kpis.py
+│       │   └── theme.py
+│       ├── assets/
+│       │   └── style.css
+│       ├── .streamlit/
+│       │   └── config.toml
+│       ├── data/
+│       │   └── airbnb_features.csv
+│       ├── requirements.txt
+│       ├── run.sh
+│       └── README.md
 │
 ├── README.md
 ├── ONBOARDING.md
