@@ -1,0 +1,18 @@
+[theme]
+base = "light"
+primaryColor = "#16A34A"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F1F5F9"
+textColor = "#0F2A4A"
+font = "sans serif"
+
+[server]
+# Réglages nécessaires derrière le reverse-proxy d'Onyxia / SSPCloud.
+headless = true
+address = "0.0.0.0"
+port = 8501
+enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+gatherUsageStats = false

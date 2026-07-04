@@ -1,0 +1,110 @@
+/* === Dashboard Airbnb NYC — Coupe du Monde 2026 ====================== */
+
+:root {
+  --pitch: #16A34A;
+  --night: #0F2A4A;
+  --sky: #2563EB;
+  --amber: #F59E0B;
+}
+
+/* Largeur de contenu confortable */
+.block-container {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  max-width: 1280px;
+}
+
+/* Cartes KPI (st.metric) */
+[data-testid="stMetric"] {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-left: 4px solid var(--pitch);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 3px rgba(15, 42, 74, 0.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+[data-testid="stMetric"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 42, 74, 0.10);
+}
+[data-testid="stMetricLabel"] { color: #64748B; font-weight: 600; }
+[data-testid="stMetricValue"] { color: var(--night); font-weight: 700; }
+
+/* Titres */
+h1, h2, h3 { color: var(--night); letter-spacing: -0.01em; }
+
+/* Bandeau hero */
+.hero {
+  background: linear-gradient(120deg, #0F2A4A 0%, #16A34A 140%);
+  color: #FFFFFF;
+  border-radius: 18px;
+  padding: 26px 30px;
+  margin-bottom: 22px;
+}
+.hero h1 { color: #FFFFFF; margin: 0 0 6px 0; font-size: 1.9rem; }
+.hero p  { color: #DCEAF7; margin: 0; font-size: 1.02rem; }
+.hero .badge {
+  display: inline-block; background: rgba(255,255,255,.16);
+  padding: 4px 12px; border-radius: 999px; font-size: .8rem;
+  font-weight: 600; margin-bottom: 10px;
+}
+
+/* Encadrés insight */
+.insight {
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-left: 4px solid var(--pitch);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  color: #14532D;
+}
+.insight.warn {
+  background: #FFFBEB; border-color: #FDE68A; border-left-color: var(--amber);
+  color: #78350F;
+}
+
+/* Étapes storytelling */
+.step {
+  border-left: 3px solid var(--pitch);
+  padding: 4px 0 4px 18px;
+  margin: 16px 0;
+}
+.step .num {
+  display:inline-block; background: var(--pitch); color:#fff;
+  border-radius: 999px; width: 26px; height: 26px; text-align:center;
+  line-height: 26px; font-weight:700; margin-right: 8px;
+}
+
+/* Cache le menu hamburger / footer Streamlit pour un rendu "produit" */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+
+/* === Barre de navigation : vrais boutons, largeurs et marges égales == */
+.block-container { padding-top: 3rem !important; }
+
+/* Cible uniquement les boutons de navigation (clé 'nav_...') */
+[class*="st-key-nav_"] button {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 10px !important;
+  background: #F8FAFC !important;
+  color: var(--night) !important;
+  font-weight: 600 !important;
+  font-size: 0.86rem !important;
+  padding: 0 6px !important;
+  white-space: nowrap;
+  transition: all .15s ease;
+}
+[class*="st-key-nav_"] button p {
+  font-weight: 600 !important; margin: 0; font-size: 0.86rem !important;
+}
+[class*="st-key-nav_"] button:hover {
+  background: #FFFFFF !important;
+  border-color: var(--pitch) !important;
+  box-shadow: 0 3px 10px rgba(15,42,74,.08);
+  transform: translateY(-1px);
+}
+[class*="st-key-nav_"] button p { font-weight: 600 !important; margin: 0; }
