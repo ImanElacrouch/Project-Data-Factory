@@ -42,10 +42,6 @@ Onyxia qui n'expose pas automatiquement le port Streamlit. Procédure fiable :
    réglages indispensables derrière le proxy.
 4. Accéder à l'URL proxifiée fournie par Onyxia pour ce port.
 
-> Si le port ne peut pas être ouvert, l'alternative validée par les équipes
-> SSPCloud est d'utiliser un service du catalogue exposant déjà un port HTTP et
-> d'y faire tourner Streamlit dessus.
-
 ## 💡  Déploiement final sur Streamlit
 
 Le dashboard a été développé avec **Streamlit** car il permet de créer rapidement une application web interactive en Python.
