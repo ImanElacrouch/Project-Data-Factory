@@ -50,19 +50,6 @@ Onyxia qui n'expose pas automatiquement le port Streamlit. Procédure fiable :
 > SSPCloud est d'utiliser un service du catalogue exposant déjà un port HTTP et
 > d'y faire tourner Streamlit dessus.
 
-### Brancher directement la zone Gold S3 (optionnel)
-
-Le dashboard lit un CSV par défaut. Pour lire le parquet Gold ML directement,
-remplacer le corps de `_read_raw()` dans `utils/data_loader.py` par :
-
-```python
-df = pd.read_parquet("s3a://<votre_bucket>/gold/ml/airbnb_features/")
-```
-
-(nécessite les droits de lecture sur le bucket — voir le journal de déploiement).
-
----
-
 ## 📊 Les KPI métier
 
 | KPI | Formule | Intérêt métier | Lecture Coupe du Monde |
