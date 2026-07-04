@@ -52,7 +52,7 @@ Onyxia qui n'expose pas automatiquement le port Streamlit. Procédure fiable :
 > SSPCloud est d'utiliser un service du catalogue exposant déjà un port HTTP et
 > d'y faire tourner Streamlit dessus.
 
-## 💡  Déploiement final sur Streamlit ?
+## 💡  Déploiement final sur Streamlit
 
 Le dashboard a été développé avec **Streamlit** car il permet de créer rapidement une application web interactive en Python.
 
