@@ -50,6 +50,8 @@ Contrairement à **Power BI** ou **Tableau** .., il ne nécessite ni logiciel BI
 
 Ce choix permet aux utilisateurs d'explorer facilement le marché Airbnb, de filtrer les données et d'obtenir une vision globale afin de prendre rapidement des décisions.
 
+---
+
 ## 📊 Les KPI métier
 
 | KPI | Formule | Intérêt métier | Lecture Coupe du Monde |
@@ -91,7 +93,7 @@ Tous les titres sont **explicites** (ils disent ce qu'on voit, pas ce qu'on mesu
 
 ---
 
----
+
 
 ## 🗂️ Architecture
 
