@@ -31,6 +31,8 @@ Le dashboard cherche les données dans cet ordre :
 
 ## 🧭 Déploiement sur Onyxia / SSPCloud
 
+Le dashboard a été **testé et validé sur Onyxia / SSPCloud**.
+
 L'erreur **404** rencontrée lors de la première tentative vient du reverse-proxy
 Onyxia qui n'expose pas automatiquement le port Streamlit. Procédure fiable :
 
@@ -49,6 +51,14 @@ Onyxia qui n'expose pas automatiquement le port Streamlit. Procédure fiable :
 > Si le port ne peut pas être ouvert, l'alternative validée par les équipes
 > SSPCloud est d'utiliser un service du catalogue exposant déjà un port HTTP et
 > d'y faire tourner Streamlit dessus.
+
+## 💡  Déploiement final sur Streamlit ?
+
+Le dashboard a été développé avec **Streamlit** car il permet de créer rapidement une application web interactive en Python.
+
+Contrairement à **Power BI** ou **Tableau** .., il ne nécessite ni logiciel BI, ni licence, ni compte Microsoft pour consulter le tableau de bord. Une simple **URL** suffit.
+
+Ce choix permet aux utilisateurs d'explorer facilement le marché Airbnb, de filtrer les données et d'obtenir une vision globale afin de prendre rapidement des décisions.
 
 ## 📊 Les KPI métier
 
