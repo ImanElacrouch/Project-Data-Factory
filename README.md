@@ -244,6 +244,7 @@ Les règles suivantes sont appliquées :
 data-factory/
 
 .
+.
 ├── src/
 │   ├── ingestion/
 │   │   └── download_airbnb.py                [Architecte Data]
@@ -283,7 +284,8 @@ data-factory/
 │       ├── .streamlit/
 │       │   └── config.toml
 │       ├── data/
-│       │   └── airbnb_features.csv
+│       │   ├── airbnb_features.csv
+│       │   └── README.md
 │       ├── requirements.txt
 │       ├── run.sh
 │       └── README.md
