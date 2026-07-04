@@ -91,11 +91,6 @@ Tous les titres sont **explicites** (ils disent ce qu'on voit, pas ce qu'on mesu
 
 ---
 
-## 🎛️ Filtres interactifs (barre latérale, partagés entre toutes les pages)
-
-Arrondissement · Quartier · Type de logement · Prix maximum ·
-Disponibilité minimale · Taux d'occupation minimum · Réinitialisation.
-
 ---
 
 ## 🗂️ Architecture
