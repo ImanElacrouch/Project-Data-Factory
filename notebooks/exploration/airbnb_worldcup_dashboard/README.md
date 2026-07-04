@@ -9,8 +9,10 @@ Tableau de bord **Streamlit + Plotly** connecté aux données réelles de la zon
 **Onyxia / SSPCloud**. Conçu pour être compris par un décideur non technique en
 moins de deux minutes.
 
+🌐 **Application en ligne :** https://data-factory-dashboard.streamlit.app/
+
 Contexte réel : le MetLife Stadium (New York / New Jersey) accueille **8 matchs**
-du tournoi du 13 juin au **19 juillet 2026 (finale)** d'où une pression forte
+du tournoi du 13 juin au **19 juillet 2026 (finale)**, d'où une pression forte
 sur le logement et les prix.
 
 ---
