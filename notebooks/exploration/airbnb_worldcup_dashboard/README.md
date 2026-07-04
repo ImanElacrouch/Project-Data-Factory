@@ -124,7 +124,7 @@ airbnb_worldcup_dashboard/
 └── README.md
 ```
 
-Pipeline respecté : **Bronze → Silver → Gold → Dashboard** (Medallion).
+Pipeline respecté : **Bronze → Silver → Gold → Dashboard**.
 
 ---
 
