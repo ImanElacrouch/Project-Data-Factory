@@ -6,6 +6,7 @@
 
 Tableau de bord **Streamlit + Plotly** connecté aux données réelles de la zone
 **Gold**, déployable en test sur **Onyxia / SSPCloud**.
+
 🌐 **Application en ligne :** https://data-factory-dashboard.streamlit.app/
 
 Contexte réel : le MetLife Stadium (New York / New Jersey) accueille **8 matchs**
