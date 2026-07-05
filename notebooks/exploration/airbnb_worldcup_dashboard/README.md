@@ -105,7 +105,7 @@ airbnb_worldcup_dashboard/
 │   ├── carte.py            # carte interactive + heatmap densité
 │   ├── prix.py             # heatmap, distribution, croisements
 │   ├── quartiers.py        # top 10 + score compromis
-│   └── recommandations.py  # storytelling 5 étapes + tableau final
+│   └── recommandations.py  # Recommandations en 5 étapes + tableau final
 ├── components/
 │   ├── kpi_cards.py        # cartes KPI réutilisables
 │   └── filters.py          # filtres latéraux partagés
@@ -125,7 +125,7 @@ Pipeline respecté : **Bronze → Silver → Gold → Dashboard**.
 
 ---
 
-## 📖 Storytelling (page Recommandations)
+## 📖 Page Recommandations
 
 1. Le contexte de la Coupe du Monde 2026 à New York.
 2. La demande de logement explose.
