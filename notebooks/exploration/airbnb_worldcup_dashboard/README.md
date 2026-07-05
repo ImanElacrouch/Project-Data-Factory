@@ -4,8 +4,7 @@
 > la Coupe du Monde 2026, où peuvent-ils se loger à moindre coût tout en
 > conservant de bonnes conditions de séjour ? »_
 
-Tableau de bord **Streamlit** connecté aux données réelles de la zone
-**Gold**, déployable en test sur **Onyxia / SSPCloud**.
+Tableau de bord **Streamlit** connecté aux données réelles issues de la zone Gold, déployable en environnement de test sur **Onyxia / SSPCloud**.
 
 🌐 **Application en ligne :** https://data-factory-dashboard.streamlit.app/
 
